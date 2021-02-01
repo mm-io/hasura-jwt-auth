@@ -1,0 +1,11 @@
+- function:
+    schema: public
+    name: hasura_auth
+- function:
+    schema: public
+    name: hasura_refresh
+  configuration:
+    session_argument: hasura_session
+- function:
+    schema: public
+    name: hasura_reset_password

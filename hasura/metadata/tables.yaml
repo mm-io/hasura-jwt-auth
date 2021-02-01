@@ -1,0 +1,52 @@
+- table:
+    schema: public
+    name: hasura_reset_token
+  insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+      - email
+      backend_only: false
+- table:
+    schema: public
+    name: hasura_user
+  insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+      - cleartext_password
+      - email
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - access_token
+      - refresh_token
+      filter: {}
+      limit: 1
+  - role: user
+    permission:
+      columns:
+      - allowed_roles
+      - created_at
+      - default_role
+      - email
+      - enabled
+      - id
+      - updated_at
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      limit: 1
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - cleartext_password
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      check: null

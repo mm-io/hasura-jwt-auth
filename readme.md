@@ -1,5 +1,6 @@
-
-lorem ipsum wip
+```
+Working but WIP
+```
 
 Heavily based off the work by sander-io at: https://github.com/sander-io/hasura-jwt-auth
 
